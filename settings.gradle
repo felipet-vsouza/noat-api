@@ -1,5 +1,5 @@
 rootProject.name = 'noat-api'
 include 'data'
-include 'api'
 include 'business'
+include 'api'
 

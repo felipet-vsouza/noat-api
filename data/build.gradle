@@ -1,16 +1,41 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
+        classpath("io.franzbecker:gradle-lombok:1.14")
+    }
 }
 
-group 'noat'
-version '1.0-SNAPSHOT'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "io.franzbecker.gradle-lombok"
 
-sourceCompatibility = 1.8
+jar {
+    baseName = 'noat-api-data'
+    version = '0.0.1-SNAPSHOT'
+}
 
 repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.boot:spring-boot-dependencies:2.0.3.RELEASE")
+    }
 }
