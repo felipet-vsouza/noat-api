@@ -1,0 +1,18 @@
+spring:
+    profiles: test
+    data:
+        mongodb:
+            host: localhost
+            port: 27017
+name: test-YAML
+environment: test
+
+---
+spring:
+    profiles: prod
+    data:
+        mongodb:
+            host: localhost
+            port: 27017
+name: prod-YAML
+environment: production

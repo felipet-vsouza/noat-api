@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 
 @Getter
 @Builder
-@ToString
+@ToString(exclude = "id")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
